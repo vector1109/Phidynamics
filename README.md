@@ -105,10 +105,15 @@ Mejora de visualizaciones interactivas
 Extensión a más conformaciones de ADN (A-DNA, Z-DNA, etc.)
 
 
-Licencia
-Este proyecto se distribuye bajo la GNU Affero General Public License v3.0 (AGPL-3.0).
-Licencia dual: El código fuente es libre según AGPL-3.0. Para uso comercial o integración en productos propietarios, contactar al autor para licencias comerciales específicas.
-Ver el archivo LICENSE para más detalles.
+📄 Licencia
+Este proyecto se distribuye principalmente bajo la GNU Affero General Public License v3.0 (AGPL-3.0).
+Ver el archivo LICENSE para el texto completo.
+Licencia Dual / Comercial
+Además de la licencia AGPL-3.0, se ofrece licencia dual comercial.
+Esto permite el uso del software en proyectos propietarios o entornos cerrados sin estar obligado a cumplir con las condiciones copyleft de la AGPL (como compartir modificaciones del código fuente).
+Si estás interesado en una licencia comercial, por favor contacta al autor para discutir los términos.
+Update README.md - Mejorar sección de licencia dual
 
-Autor: Fabian Dario Farias
+Autor: fabiandariofarias@gmail.com
+       vector.torsion.srl@gmail.com
 "El espacio-tiempo biológico ya no es lineal."
