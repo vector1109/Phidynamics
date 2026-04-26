@@ -112,7 +112,7 @@ Licencia Dual / Comercial
 Además de la licencia AGPL-3.0, se ofrece licencia dual comercial.
 Esto permite el uso del software en proyectos propietarios o entornos cerrados sin estar obligado a cumplir con las condiciones copyleft de la AGPL (como compartir modificaciones del código fuente).
 Si estás interesado en una licencia comercial, por favor contacta al autor para discutir los términos.
-Update README.md - Mejorar sección de licencia dual
+
 
 Autor: fabiandariofarias@gmail.com
        vector.torsion.srl@gmail.com
