@@ -1,80 +1,172 @@
 # Phidynamics
 
-**Sovereign Biophysics Framework**  
-*Motor de Bio-Geometría Fractal basado en Tiempo OAM y Torsión Riemann-Cartan*
+### Marco Soberano de Biofísica Computacional
 
-[![Python 3.8+](https://img.shields.io/badge/Python-3.8%2B-blue.svg)](https://www.python.org/)
-[![License: AGPL v3](https://img.shields.io/badge/License-AGPL_v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
-[![Development Status](https://img.shields.io/badge/Status-Active_Development-orange.svg)]()
+**Biofísica computacional derivada de torsión para análisis estructural reproducible**
 
-> Framework de física computacional para análisis estructural biológico.  
-> Sustituye modelos "caja negra" con leyes de torsión fractal (Ley de Torsión Bimodal).  
-> Diseñado para auditoría, precisión física y ejecución local.
-
-![Phidynamics - Sovereign Biophysics Framework](https://github.com/fabianista/Phidynamics/blob/main/imagenes/ADN_torsional.png)
+> *“La estructura biológica no se trata aquí como una caja negra, sino como geometría bajo torsión.”*
 
 ---
 
-## Visión
+## Descripción general
 
-La vida no se organiza mediante ecuaciones lineales. Se autoorganiza a través de **curvatura esférica**, **tiempo como Momento Angular Orbital (OAM)** y **torsión fractal** modulada por la proporción áurea (Φ).
+Phidynamics es un marco experimental de biofísica computacional orientado al análisis estructural de biomoléculas mediante torsión, curvatura y organización geométrica.
 
-Phidynamics es un marco experimental de **biofísica computacional** que modela esta geometría viva mediante geometría de Riemann-Cartan y detecta estados funcionales de moléculas biológicas (especialmente ADN) a través de su **firma torsional**.
+Basado en un formalismo geométrico inspirado en Riemann–Cartan, el sistema reemplaza inferencia opaca tipo “caja negra” por observables geométricos explícitos, auditables y reproducibles, aplicables al estudio estructural de proteínas, ADN y sistemas helicoidales complejos.
 
----
+El objetivo del proyecto es explorar si ciertos regímenes estructurales biológicos pueden distinguirse de forma estable mediante observables geométricos normalizados derivados de torsión.
 
-## Principios Fundamentales
+Phidynamics fue diseñado para:
 
-- **Universo Esférico**: Curvatura positiva en lugar de modelo plano
-- **Tiempo OAM**: El tiempo como momento angular orbital, no como línea recta
-- **Torsión Fractal**: Campo de información modulado por Φ (proporción áurea)
-- **Bifurcación Estructural**: Capacidad de distinguir estados del ADN mediante una constante física invariante (**Λ_D ≈ 0.1759**)
+* ejecución local,
+* interpretabilidad física,
+* comparación estructural reproducible,
+* y experimentación falsable de bajo costo sobre hardware de consumo.
 
----
+Phidynamics no requiere:
 
-## Características Principales
+* clústeres GPU,
+* supercómputo de dinámica molecular,
+* infraestructura propietaria,
+* ni pipelines de entrenamiento de machine learning.
 
-- Motor Riemann-Cartan con **métrica helicoidal** dependiente de tiempo OAM
-- Generador de crecimiento fractal áureo con armónicos múltiples
-- Soporte para **doble hebra** con fase asimétrica (modelado de surcos mayor/menor)
-- Validación sistemática contra estructuras reales del **Protein Data Bank (PDB)**
-- Cálculo de **firma torsional (Delta)** como indicador de estado estructural
-- Clasificación bimodal del ADN:
-  - **Estado Relajado** (Δ ≈ 0.04) → Banda Alfa (~7.83 Hz)
-  - **Estado Activo/Tensionado** (Δ ≈ 0.176) → Banda Gamma (~34.4 Hz)
-- Predicción de **accesibilidad genómica** basada en tensión torsional
-- Visualización 3D del crecimiento helicoidal y espiral torsional
+Corre localmente, de forma determinista, y produce observables geométricos repetibles a partir de datos estructurales reales.
 
 ---
 
-## Resultados Científicos Destacados
+## Hipótesis central
 
-- **Proteínas**: Excelente ajuste torsional (RMSD normalizado ~0.04–0.09)
-- **B-DNA** (1BNA, 1D65): Firma torsional consistente **Δ ≈ 0.1759 – 0.1761**
-- **ADN Relajado** (1D02): Coincidencia casi perfecta **Δ ≈ 0.0400**
-- La constante **0.1759** se interpreta como **Λ_D** (Lambda de ADN): invariante de acoplamiento torsional entre el campo fractal y la estructura discreta del ADN.
+Phidynamics investiga si una geometría normalizada derivada de torsión puede actuar como observable estable para distinguir regímenes estructurales en sistemas biológicos.
+
+En lugar de tratar la organización biomolecular como un problema puramente estadístico o inferencial, el sistema modela la estructura como respuesta geométrica restringida bajo organización torsional.
+
+La hipótesis de trabajo es que un observable geométrico normalizado (`Δ`) puede separar de forma reproducible:
+
+* regímenes proteicos globulares,
+* regímenes de ADN B canónico,
+* y conformaciones relajadas o de baja tensión.
+
+Actualmente esto se trata como una **hipótesis de biofísica computacional**, no como una ley física establecida.
 
 ---
 
-## Estructura del Proyecto
+## Qué es Phidynamics
+
+Phidynamics es:
+
+* un marco de biofísica computacional,
+* un motor de análisis estructural derivado de torsión,
+* una tubería reproducible de descriptores geométricos,
+* una alternativa basada en hipótesis frente a inferencia biológica opaca,
+* una herramienta científica local-first.
+
+---
+
+## Qué no es Phidynamics
+
+Phidynamics **no** es:
+
+* un reemplazo de dinámica molecular,
+* un predictor de machine learning,
+* un sistema clínico o diagnóstico,
+* un dispositivo biomédico,
+* un instrumento médico validado,
+* un sustituto de biología experimental húmeda (wet-lab).
+
+Es un marco experimental de análisis estructural, modelado falsable y generación de hipótesis.
+
+---
+
+## Alcance científico y limitaciones
+
+Phidynamics es un sistema de investigación experimental.
+
+Está orientado a:
+
+* modelado estructural,
+* comparación geométrica,
+* generación de hipótesis,
+* y biofísica computacional exploratoria.
+
+No está destinado a:
+
+* diagnóstico,
+* tratamiento,
+* interpretación clínica,
+* ni toma de decisiones biomédicas.
+
+Las salidas actuales deben interpretarse como **observables geométricos**, no como causalidad biológica directa.
+
+En particular:
+
+* `Δ` es actualmente un descriptor estructural,
+* no una constante física universal demostrada,
+* y no una variable causal biológica validada.
+
+Las interpretaciones sobre resonancia, estado espectral o accesibilidad genómica son actualmente **hipótesis de trabajo** y deben tratarse como exploratorias hasta validación independiente.
+
+---
+
+## Resultado principal (estado actual)
+
+El resultado más sólido del proyecto no es la afirmación de una nueva ley física.
+
+El resultado más sólido es que Phidynamics produce un **observable normalizado derivado de torsión (`Δ`) que parece separar regímenes estructurales de forma reproducible** bajo ejecución local.
+
+En las pruebas actuales, `Δ` muestra separación estable entre:
+
+| Clase estructural         | Rango observado de `Δ` |
+| ------------------------- | ---------------------: |
+| Proteínas globulares      |           ~0.04 – 0.09 |
+| Estados tipo ADN relajado |                  ~0.04 |
+| ADN B canónico            |           ~0.17 – 0.18 |
+
+Esto sugiere que `Δ` puede funcionar como descriptor reproducible de régimen estructural bajo comparación geométrica normalizada.
+
+Este es, actualmente, el resultado central del marco.
+
+---
+
+## Por qué importa
+
+Phidynamics no intenta competir con dinámica molecular por fuerza bruta.
+
+Su aporte es otro:
+
+propone que observables geométricos de bajo costo pueden capturar regímenes estructurales biológicamente relevantes sin requerir pilas de simulación de alta complejidad.
+
+La implicancia práctica es directa:
+
+un descriptor estructural falsable y reproducible puede calcularse localmente sobre hardware de consumo sin depender de sistemas opacos de inferencia.
+
+Eso vuelve al marco:
+
+* inspeccionable,
+* reproducible,
+* portable,
+* y científicamente falsable.
+
+---
+
+## Características principales
+
+* motor geométrico inspirado en Riemann–Cartan,
+* métrica helicoidal modulada por OAM,
+* observable estructural derivado de torsión (`Δ`),
+* generador de crecimiento fractal / helicoidal,
+* modelado de ADN de doble hebra,
+* comparación estructural normalizada,
+* flujo reproducible basado en PDB,
+* ejecución local determinista,
+* visualización geométrica 3D,
+* análisis compatible con CPU de bajo costo.
+
+---
+
+## Instalación
 
 ```bash
-phidynamics/
-├── core/
-│   ├── constants.py          # Φ, constantes biogemétricas y físicas
-│   └── geometry.py           # RiemannCartanEngine
-├── bio/
-│   ├── fractal.py            # CrecimientoFractal (armónicos + dual strand)
-│   ├── visualizer.py         # Visualización 3D
-│   └── resonance.py          # Acoplamiento con resonancias ambientales
-├── main.py
-├── analizar_pdb.py           # Análisis completo de estructuras PDB
-├── calculadora_accesibilidad.py
-├── validate_with_pdb.py
-└── ...
-
-Instalación
-Bashgit clone https://github.com/fabianista/Phidynamics.git
+git clone https://github.com/fabianista/Phidynamics.git
 cd Phidynamics
 
 python -m venv venv
@@ -82,38 +174,211 @@ venv\Scripts\activate          # Windows
 # source venv/bin/activate     # Linux / macOS
 
 pip install torch numpy matplotlib biopython scipy
-Uso Rápido
-Bash# Simulación básica con visualización
+```
+
+---
+
+## Inicio rápido
+
+### Ejecutar simulación geométrica local
+
+```bash
 python main.py
+```
 
-# Análisis completo de una estructura PDB
+### Analizar una estructura PDB real
+
+```bash
 python analizar_pdb.py 1BNA
-Ejemplo de salida:
-textDelta (Torsión): 0.1759
-Frecuencia Sintonía: 34.43 Hz
-Estado Espectral: Gamma (Procesamiento/Alta Energía)
+```
+
+Salida esperada (ejemplo):
+
+```text
+Delta (Torsión): 0.1759
+Frecuencia de Resonancia: 34.43 Hz
+Estado Espectral: Gamma (Alta Energía / Procesamiento)
 Accesibilidad Genómica: 100.00%
+```
 
-Estado del Proyecto
-Proyecto en desarrollo activo
-Se han realizado múltiples verificaciones de datos contra estructuras reales del PDB (proteínas y ADN). El framework ha demostrado consistencia en la detección de estados estructurales y funcionales del ADN mediante su firma torsional.
-Próximos pasos:
+---
 
-Optimización automática de armónicos
-Simulación dinámica de tensión torsional
-Mejora de visualizaciones interactivas
-Extensión a más conformaciones de ADN (A-DNA, Z-DNA, etc.)
+## Reproducibilidad
 
+Todas las comparaciones estructurales reportadas en este repositorio están diseñadas para reproducirse en hardware de consumo estándar.
 
-📄 Licencia
-Este proyecto se distribuye principalmente bajo la GNU Affero General Public License v3.0 (AGPL-3.0).
-Ver el archivo LICENSE para el texto completo.
-Licencia Dual / Comercial
-Además de la licencia AGPL-3.0, se ofrece licencia dual comercial.
-Esto permite el uso del software en proyectos propietarios o entornos cerrados sin estar obligado a cumplir con las condiciones copyleft de la AGPL (como compartir modificaciones del código fuente).
-Si estás interesado en una licencia comercial, por favor contacta al autor para discutir los términos.
+No se requiere clúster GPU, infraestructura propietaria ni entrenamiento de modelos.
 
+Scripts principales de reproducibilidad:
 
-Autor: fabiandariofarias@gmail.com
-       vector.torsion.srl@gmail.com
-"El espacio-tiempo biológico ya no es lineal."
+```bash
+python validate_with_pdb.py
+python consistency_test.py
+python universal_test.py
+python verificacion_constante.py
+python calculadora_accesibilidad.py
+```
+
+Estos scripts reproducen el flujo de comparación estructural utilizado para derivar las observaciones actuales sobre regímenes `Δ`.
+
+---
+
+## Resumen de validación
+
+La validación actual sugiere que el observable normalizado derivado de torsión (`Δ`) se comporta como un descriptor estable de régimen bajo normalización geométrica.
+
+Comportamiento observado:
+
+* los modelos iniciales en coordenadas crudas divergen,
+* la comparación geométrica normalizada estabiliza,
+* las proteínas agrupan en un régimen de `Δ` bajo,
+* el ADN B canónico ocupa una banda estable superior de `Δ`,
+* los estados relajados tipo ADN colapsan hacia el régimen adyacente a proteínas.
+
+Esto **no** establece todavía una ley física universal.
+
+Sí establece una separación computacional reproducible que justifica investigación adicional.
+
+---
+
+## Hoja de ruta
+
+* [ ] Agregar baseline de alineamiento Procrustes
+* [ ] Agregar benchmark RMSD / `Δ`
+* [ ] Agregar CLI batch multi-PDB
+* [ ] Agregar exportación JSON de resultados
+* [ ] Agregar tests unitarios para estabilidad de `Δ`
+* [ ] Agregar validación reproducible en CI
+* [ ] Extender clases conformacionales de ADN (A-DNA / Z-DNA)
+* [ ] Agregar barridos de parámetros armónicos
+* [ ] Agregar informe de validación publicable
+* [ ] Agregar análisis de significancia estadística
+
+---
+
+## Licencia (Esquema Dual)
+
+Phidynamics se distribuye bajo un esquema de **licencia dual**, separando explícitamente la capa de implementación del marco conceptual.
+
+### 1. Código fuente (Open Source)
+
+Todo el código contenido en:
+
+* `src/`
+* `tests/`
+* `scripts/`
+* utilidades de ejecución
+* visualización
+* validación reproducible
+
+se distribuye bajo:
+
+**GNU Affero General Public License v3.0 (AGPL-3.0)**
+
+Esto permite:
+
+* uso,
+* auditoría,
+* modificación,
+* redistribución,
+* despliegue local o remoto,
+
+con la obligación de mantener apertura del código derivado y de cualquier servicio expuesto sobre él.
+
+Esto protege al sistema contra apropiación cerrada de su implementación.
+
+### 2. Marco teórico y formulación conceptual
+
+Todo el contenido contenido en:
+
+* `docs/`
+* formulación teórica,
+* hipótesis,
+* taxonomía conceptual,
+* documentación metodológica,
+* nomenclatura original,
+* interpretación estructural,
+* formalismo explicativo,
+
+se distribuye bajo:
+
+**CC BY-NC-ND 4.0**
+(Atribución – No Comercial – Sin Derivadas)
+
+Esto permite:
+
+* lectura,
+* cita,
+* discusión,
+* difusión académica,
+
+pero **no permite**:
+
+* uso comercial del marco conceptual,
+* reformulación derivada como teoría propia,
+* relicenciamiento conceptual,
+* redistribución modificada,
+* apropiación metodológica sin autorización.
+
+### ¿Por qué licencia dual?
+
+Porque este repositorio contiene dos capas distintas:
+
+1. una implementación computacional auditable,
+2. una formulación conceptual original.
+
+Ambas conviven, pero no cumplen la misma función.
+
+El código puede auditarse y extenderse.
+La formulación puede estudiarse y citarse.
+La apropiación conceptual no es libre.
+
+### Resumen práctico
+
+| Componente                 | Licencia        | Uso permitido                                  |
+| -------------------------- | --------------- | ---------------------------------------------- |
+| Código fuente              | AGPL-3.0        | uso, modificación, despliegue con reciprocidad |
+| Scripts y validación       | AGPL-3.0        | reproducible, auditable, extensible            |
+| Documentación metodológica | CC BY-NC-ND 4.0 | lectura, cita, difusión                        |
+| Marco conceptual           | CC BY-NC-ND 4.0 | no comercial, no derivado                      |
+
+### Licenciamiento comercial
+
+Si desea:
+
+* integrar el marco en software propietario,
+* relicenciar componentes,
+* usar el formalismo en productos cerrados,
+* incorporar la metodología en entornos comerciales,
+* o negociar excepciones de copyleft,
+
+debe solicitar licencia comercial o autorización expresa al autor.
+
+---
+
+## Cita
+
+Si utiliza Phidynamics en investigación, cite:
+
+```bibtex
+@software{phidynamics2026,
+  author = {Farias, Fabian Dario},
+  title = {Phidynamics: Marco Soberano de Biofísica Computacional},
+  year = {2026},
+  url = {https://github.com/fabianista/Phidynamics}
+}
+```
+
+---
+
+## Autor
+
+**Fabián Darío Farías**
+fabianista / Vector Torsion SRL
+
+* [fabiandariofarias@gmail.com](mailto:fabiandariofarias@gmail.com)
+* [vector.torsion.srl@gmail.com](mailto:vector.torsion.srl@gmail.com)
+
+---
+
+> *Phidynamics no reclama consenso. Reclama reproducibilidad.*
