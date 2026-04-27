@@ -2,6 +2,8 @@ import json
 import os
 import statistics
 from collections import Counter
+from pathlib import Path
+from analizar_pdb import orquestar
 
 def mostrar_reporte():
     ruta_db = "data/bitacora_investigacion.json"
@@ -45,5 +47,20 @@ def mostrar_reporte():
     print(f"Distribución por bandas:      {dict(bandas)}")
     print(f"{'='*75}\n")
 
+def exportar_reporte_visual(pdb_id="1BNA"):
+    resultados, fig = orquestar(pdb_id, mostrar=False)
+
+    if fig is None:
+        print("[ERROR] No se pudo generar figura.")
+        return
+
+    salida = Path("outputs")
+    salida.mkdir(exist_ok=True)
+
+    archivo = salida / f"{pdb_id.lower()}_torsion.png"
+    fig.savefig(archivo, dpi=300, bbox_inches="tight")
+    print(f"[OK] Imagen exportada a: {archivo}")
+
 if __name__ == "__main__":
     mostrar_reporte()
+    exportar_reporte_visual("1BNA")

@@ -1,75 +1,259 @@
-# Phidynamics Framework: Motor de Bio-Geometría Fractal
+````markdown
+# Phidynamics — Manual de Usuario
 
-Phidynamics es un framework computacional avanzado diseñado para modelar estructuras biológicas a partir de principios de **geometría fractal y resonancia armónica**. A diferencia de los métodos químicos tradicionales, este sistema trata a las macromoléculas (proteínas, ADN, complejos virales) como manifestaciones geométricas de una firma torsional subyacente.
+## Introducción
 
-El motor central (`fractal.py`) utiliza un sistema de análisis armónico para reconstruir la morfología 3D de cualquier estructura PDB, permitiendo validar leyes universales de plegamiento más allá de la composición molecular.
+Phidynamics es una consola de análisis bioestructural orientada al procesamiento de estructuras PDB, simulación fractal y validación dinámica.
+
+Este manual está dirigido al usuario final.
+
+No es necesario modificar código interno ni mover archivos dentro del sistema.  
+El usuario solo debe ejecutar la consola y proporcionar rutas de entrada.
 
 ---
 
-## 1. Configuración del Entorno
-Asegúrate de ejecutar tus pruebas en un entorno virtual (`venv`) con las dependencias necesarias:
+## Inicio rápido
 
-```bash
-pip install biopython numpy
-La estructura del proyecto debe mantener fractal.py dentro de phidynamics/bio/ para asegurar la correcta importación del motor.
-________________________________________
-2. Flujo de Trabajo (Workflow)
-El uso del sistema sigue un ciclo de investigación repetible y modular:
-1.	Captura: Descargar y procesar archivos .ent (PDB) mediante descargador_pdb.py.
-2.	Identificación: Usar scan_frequency.py y scan_fase.py para encontrar la "firma torsional" (armónicos) específica de la estructura.
-3.	Simulación: Instanciar CrecimientoFractal con la firma encontrada para generar la estructura sintética.
-4.	Validación: Comparar contra la estructura real mediante consistency_test.py o proyeccion_test.py calculando el RMSD Normalizado.
-________________________________________
-3. Uso del Motor (CrecimientoFractal)
-El núcleo del sistema es un modelo generativo de morfología biológica. Se invoca de la siguiente manera:
-Python
-from phidynamics.bio.fractal import CrecimientoFractal
+Desde PowerShell, dentro del entorno del proyecto:
 
-# Definir firma: [(Amplitud, Frecuencia, Fase)]
-firmas = [(0.5, 0.1, 0.0), (0.2, 0.3959, 0.0)]
+```powershell
+python user_console.py
+````
 
-# Instanciar el motor
-engine = CrecimientoFractal(
-    harmonics=firmas,
-    dual_strand=True,       # Habilitar para ADN o estructuras dobles
-    target_dist=20.0        # Restricción física
-)
+Esto abrirá la consola interactiva de usuario.
 
-# Generar y cuantizar
-coords = engine.generar_espiral_aurea(num_nodos=100, cuantizar=True)
-________________________________________
-4. Guía de Scripts
-Script	Propósito
-analizar_pdb.py	Análisis de estado base de estructuras PDB.
-consistency_test.py	Verifica la ley universal de plegamiento mediante RMSD.
-cuantizacion_test.py	Ajusta la salida fractal a la resolución física real (step=0.5Å).
-proyeccion_test.py	Mapeo de la estructura fractal al espacio de coordenadas real.
-scan_fase.py	Optimización del desfasaje para minimizar el error.
-scan_frequency.py	Identificación de la resonancia armónica de la estructura.
-mapeo_dinamico.py	Visualización del comportamiento torsional bajo estrés.
-________________________________________
-5. Fundamentación Teórica: Un Modelo Agnóstico
-El motor no depende de la composición química (nucleótidos vs. aminoácidos). Opera recibiendo una "firma de resonancia" ($harmonics$) y una "fuerza de torsión" ($k_{total}$), generando una geometría que optimiza ese estado energético.
-Evidencia experimental:
-Los tests realizados con consistency_test.py han validado el sistema con diversas estructuras:
-•	1MBN: Mioglobina (proteína globular).
-•	1PG1: Proteína viral.
-•	1UBQ: Ubiquitina (proteína reguladora pequeña).
-El éxito en estos modelos demuestra que la torsión describe las reglas geométricas de empaquetamiento que subyacen a toda la materia orgánica.
-________________________________________
-6. Motor de Computación Z60 y Estabilidad
-La complejidad del sistema se gestiona bajo la filosofía: La complejidad no debería recaer en la ejecución, sino en la interpretación.
-Abstracción de la lógica Z60
-El usuario no interactúa manualmente con los estados "sexagesimales". La clase CrecimientoFractal actúa como un wrapper: el usuario trabaja con coordenadas 3D (flotantes estándar), mientras que el motor mapea internamente estas estructuras a la lógica Z60.
-El Estabilizador: "Smooth Loss"
-Para evitar saltos erráticos y modelos divergentes (o "El Abismo de los Gradientes") durante la optimización, se implementa una función de Smooth Loss. Esta función garantiza que el modelo converja de manera estable, permitiendo al usuario confiar en la robustez de los resultados obtenidos.
-Interpretación de la Base-60 (Z60)
-La Base-60 no es solo aritmética, es geometría circular. Para trabajar con este sistema, el usuario debe considerar dos puntos críticos:
-•	Transporte de datos: Al activar la cuantización (cuantizar=True), el sistema convierte la representación continua (física) en una representación discreta basada en 60. Esto no es pérdida de precisión, sino una alineación geométrica con la resonancia fundamental.
-•	Interpretabilidad del RMSD: El error (RMSD) se mide contra esta grilla cuantizada. Es vital entender que el sistema opera en "chunks" o bloques de 60. Si se intenta validar resultados sin esta premisa, el usuario podría malinterpretar el error como imprecisión cuando, en realidad, es confinamiento geométrico.
-________________________________________
-7. Resolución de Problemas Comunes
-•	TypeError (unexpected keyword argument): Ocurre generalmente al actualizar la clase CrecimientoFractal. Asegúrate de que los métodos __init__ y generar_espiral_aurea coincidan con la versión actual en fractal.py.
-•	Estado "Desfasado": Si el RMSD > 0.1, no es un error de código, sino una señal de que los armónicos necesitan refinamiento. Ejecuta scan_frequency.py para re-calibrar la firma.
-•	Archivos PDB faltantes: El sistema intenta descargar el archivo .ent. Si falla, verifica tu conexión o coloca el archivo manualmente en la raíz del proyecto.
-Nota: Este framework es un modelo generativo. La precisión de los resultados depende directamente de la calidad de la firma armónica detectada.
+---
+
+## Menú principal
+
+Al iniciar, el sistema mostrará:
+
+```text
+============================================================
+                 PHIDYNAMICS — CONSOLA DE USUARIO
+============================================================
+1. Analizar ID PDB
+2. Analizar archivo PDB
+3. Analizar lista de IDs
+4. Analizar carpeta de estructuras
+5. Ejecutar simulación fractal
+6. Ejecutar validación
+7. Ver reporte
+0. Salir
+============================================================
+```
+
+---
+
+## Modos de uso
+
+### 1. Analizar ID PDB
+
+Permite analizar una estructura remota usando su identificador PDB.
+
+Ejemplo:
+
+```text
+1BNA
+```
+
+El sistema descargará automáticamente la estructura y ejecutará el análisis.
+
+---
+
+### 2. Analizar archivo PDB
+
+Permite analizar un archivo local `.pdb` o `.ent`.
+
+Ejemplo de ruta:
+
+```text
+C:\Users\Fabian\Desktop\mi_proteina.pdb
+```
+
+El sistema copiará el archivo al entorno interno y lo procesará.
+
+---
+
+### 3. Analizar lista de IDs
+
+Permite analizar múltiples estructuras desde un archivo `.txt`.
+
+Ejemplo de ruta:
+
+```text
+C:\Users\Fabian\Desktop\mis_ids.txt
+```
+
+Contenido del archivo:
+
+```text
+1BNA
+1CRN
+1MBN
+2POR
+```
+
+Cada línea será procesada como una estructura independiente.
+
+---
+
+### 4. Analizar carpeta de estructuras
+
+Permite analizar múltiples archivos `.pdb` y `.ent` contenidos en una carpeta.
+
+Ejemplo de ruta:
+
+```text
+D:\Laboratorio\proteinas\
+```
+
+Todos los archivos compatibles dentro de esa carpeta serán procesados.
+
+---
+
+### 5. Ejecutar simulación fractal
+
+Ejecuta el motor de simulación geométrica fractal del sistema.
+
+Genera una simulación interna y exporta resultados estructurales.
+
+Salida:
+
+```text
+data/simulacion_fractal.json
+```
+
+---
+
+### 6. Ejecutar validación
+
+Ejecuta la suite de validación científica del sistema.
+
+Esta opción sirve para:
+
+* verificar consistencia interna
+* validar geometría
+* comprobar estabilidad del modelo
+
+---
+
+### 7. Ver reporte
+
+Muestra el reporte consolidado de análisis almacenados en bitácora.
+
+Incluye:
+
+* estructuras analizadas
+* delta
+* frecuencia
+* banda espectral
+* resumen estadístico
+
+---
+
+## Cómo cargar datos
+
+El usuario puede almacenar sus archivos en cualquier ubicación de su computadora.
+
+No es necesario mover manualmente archivos al proyecto.
+
+El sistema acepta rutas externas y organiza internamente los datos.
+
+Ejemplos válidos:
+
+```text
+C:\Users\Fabian\Desktop\proteina.pdb
+C:\Users\Fabian\Documents\mis_ids.txt
+D:\Laboratorio\estructuras\
+```
+
+Phidynamics copiará automáticamente los datos al entorno interno antes de procesarlos.
+
+---
+
+## Qué hace internamente el sistema
+
+Phidynamics organiza automáticamente los datos del usuario en su estructura interna:
+
+* archivos individuales → `input/pdb/`
+* listas → `input/lists/`
+* carpetas → `input/batch/`
+
+Esto permite mantener:
+
+* orden interno
+* reproducibilidad
+* aislamiento del motor científico
+
+El usuario no necesita interactuar con estas carpetas manualmente.
+
+---
+
+## Resultados generados
+
+Los resultados se almacenan automáticamente en la carpeta `data/`.
+
+Archivos comunes:
+
+* `data/bitacora_investigacion.json`
+* `data/simulacion_fractal.json`
+
+Estos archivos contienen:
+
+* historial de análisis
+* resultados estructurales
+* registros de simulación
+
+---
+
+## Flujo recomendado de trabajo
+
+1. Preparar archivo, lista o carpeta
+2. Ejecutar consola
+3. Seleccionar modo
+4. Ingresar ruta o ID
+5. Ejecutar análisis
+6. Revisar resultados en `data/`
+
+---
+
+## Requisitos
+
+Antes de usar el sistema:
+
+* activar entorno virtual
+* instalar dependencias
+* ejecutar desde la carpeta del proyecto
+
+Ejemplo:
+
+```powershell
+.\venv\Scripts\Activate
+python user_console.py
+```
+
+---
+
+## Notas de uso
+
+* No es necesario editar código
+* No es necesario mover archivos manualmente
+* No es necesario conocer la arquitectura interna
+* El sistema gestiona automáticamente la organización de entradas
+
+El usuario solo debe proporcionar datos y ejecutar el flujo de análisis.
+
+---
+
+## Cierre
+
+Phidynamics está diseñado para separar completamente:
+
+* operación de usuario
+* núcleo científico
+
+Esto permite una experiencia de uso simple, reproducible y segura.
+
+```
+```

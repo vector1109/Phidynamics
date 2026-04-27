@@ -41,7 +41,7 @@ def generar_puntos_fractales(delta, pasos=60):
         puntos.append([x, y, z])
     return puntos
 
-def orquestar(pdb_id):
+def orquestar(pdb_id, mostrar=True):
     print(f"\n{'='*60}")
     print(f"CICLO DE ANÁLISIS SOBERANO: {pdb_id}")
     print(f"{'='*60}")
@@ -69,13 +69,16 @@ def orquestar(pdb_id):
             titulo_grafico = f"Phidynamics: {pdb_id} | Banda: {resultados['banda']}"
             
             # Llamada a tu visualizador nativo
-            graficar_estructura(puntos, titulo=titulo_grafico)
+            fig = graficar_estructura(puntos, titulo=titulo_grafico, mostrar=mostrar)
+            return resultados, fig
             
         print(f"\n--- Ciclo finalizado para {pdb_id} ---\n")
     else:
         print(f"[FALLO] No se pudo obtener la estructura {pdb_id}")
+    
+    return None, None
 
 if __name__ == "__main__":
     # Soporte para argumento de consola o input manual
     id_input = sys.argv[1] if len(sys.argv) > 1 else input("Introduce ID PDB para análisis: ")
-    orquestar(id_input.upper())
+    orquestar(id_input.upper(), mostrar=True)

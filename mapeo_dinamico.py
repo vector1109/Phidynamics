@@ -12,7 +12,7 @@ def calcular_delta_bajo_tension(tension_factor):
     engine.target_dist = 20.0 * (1 + tension_factor * 0.1)
     
     # Simulación
-    sim = engine.generar_espiral_aurea(num_nodos=100)
+    sim = engine.generar_espiral_aurea(num_puntos=100, cuantizar=True)
     
     # Usamos una referencia normalizada para calcular la firma
     # (En un caso real usarías un PDB como '1D02' como base 0.04)
