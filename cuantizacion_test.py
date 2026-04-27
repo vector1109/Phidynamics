@@ -2,7 +2,7 @@ import numpy as np
 from Bio.PDB import PDBList, PDBParser
 from phidynamics.bio.fractal import CrecimientoFractal
 
-# Funciones auxiliares necesarias
+# Funciones auxiliares
 def normalizar_coords(coords):
     coords = coords - np.mean(coords, axis=0)
     norma = np.linalg.norm(coords)
@@ -25,7 +25,7 @@ real_coords = obtener_coords("1BNA")
 num_nodos = len(real_coords)
 r_norm = normalizar_coords(real_coords)
 
-# Motor con cuantización activada (Snap-to-grid = 0.5A)
+# Motor con cuantización activada
 engine = CrecimientoFractal(harmonics=h_dna, dual_strand=True, target_dist=20.0, step_size=0.5)
 sim_coords = engine.generar_espiral_aurea(num_nodos=num_nodos, cuantizar=True)
 
