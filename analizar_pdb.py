@@ -21,6 +21,14 @@ except ImportError as e:
     print("Asegúrate de que la carpeta 'phidynamics' tenga un archivo __init__.py")
     sys.exit(1)
 
+# PASO 1 - Nuevos imports
+from pathlib import Path
+from phidynamics.core.xyz_parser import cargar_xyz
+from phidynamics.core.distance_matrix import matriz_distancias
+from phidynamics.core.bond_detector import detectar_enlaces
+from phidynamics.core.structure_signature import clasificar_estructura
+from phidynamics.core.analyze_xyz import analizar_material
+
 def generar_puntos_fractales(delta, pasos=60):
     """
     Genera la estructura de puntos basada en la torsión Delta.
@@ -42,12 +50,28 @@ def generar_puntos_fractales(delta, pasos=60):
     return puntos
 
 def orquestar(pdb_id, mostrar=True):
+    # Interceptar .xyz
+    ruta = Path(pdb_id)
+    
+    if ruta.exists() and ruta.suffix.lower() == ".xyz":
+        print(f"\n{'='*60}")
+        print(f"CICLO DE ANÁLISIS MATERIAL: {ruta.name}")
+        print(f"{'='*60}")
+        
+        analizar_material(str(ruta))
+        print(f"\n--- Ciclo finalizado para {ruta.name} ---\n")
+        return None, None
+    
     print(f"\n{'='*60}")
     print(f"CICLO DE ANÁLISIS SOBERANO: {pdb_id}")
     print(f"{'='*60}")
     
-    # 1. Adquisición del dato
-    ruta_archivo = descargar_pdb(pdb_id)
+    # 1. Resolver entrada (archivo local o descarga)
+    if os.path.isfile(pdb_id):
+        ruta_archivo = pdb_id
+        print(f"[INFO] Usando archivo local: {ruta_archivo}")
+    else:
+        ruta_archivo = descargar_pdb(pdb_id)
     
     if ruta_archivo:
         # 2. Motor de cálculo (Resonancia y Accesibilidad)

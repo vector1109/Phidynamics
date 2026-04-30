@@ -8,6 +8,17 @@ try:
 except ImportError:
     print("[!] Advertencia: No se pudo importar CrecimientoFractal desde el paquete.")
 
+# PASO 1 - Nuevos imports para comparación, búsqueda y análisis estructural
+from phidynamics.core.similarity import similitud_firmas
+from phidynamics.core.xyz_parser import cargar_xyz
+from phidynamics.core.distance_matrix import matriz_distancias
+from phidynamics.core.structure_signature import clasificar_estructura
+from phidynamics.core.neighborhood_search import buscar_vecinos
+from phidynamics.core.compare_structures import comparar_estructuras
+from phidynamics.core.phase_report import imprimir_reporte_fase
+from phidynamics.core.phase_sweep import barrer_fase
+from phidynamics.core.diagnostics import diagnosticar
+
 def preparar_entorno():
     """Garantiza la estructura pública de carpetas."""
     carpetas = [
@@ -45,10 +56,10 @@ def resolver_entrada(valor):
     if p.is_file():
         suffix = p.suffix.lower()
 
-        if suffix in [".pdb", ".ent"]:
+        if suffix in [".pdb", ".ent", ".xyz"]:
             return ("archivo", [str(p)])
 
-        if suffix == ".txt":
+        elif suffix == ".txt":
             items = [x.strip() for x in p.read_text(encoding="utf-8").splitlines() if x.strip()]
             return ("lista", items)
 
@@ -116,6 +127,7 @@ def ejecutar_simulacion_fractal():
     except Exception as e:
         print(f"[!] No se pudo renderizar la simulación: {e}")
 
+# PASO 3 - Actualizar mostrar_ayuda
 def mostrar_ayuda():
     print("""
 Phidynamics — Consola de Usuario
@@ -136,6 +148,20 @@ Comandos oficiales:
 
   python main.py reporte
       Muestra bitácora analítica acumulada
+
+  python main.py comparar A.xyz B.xyz   (Compara similitud estructural)
+
+  python main.py buscar objetivo.xyz carpeta/ (Busca vecinos estructurales)
+
+  python main.py fase   (Ejecuta simulación de evolución de fase B60)
+
+  python main.py fase-stats   (Muestra estadísticas de barrido de fase)
+
+  python main.py fase-report   (Genera reporte formateado del análisis de fase)
+
+  python main.py fase-sweep   (Ejecuta barrido de fase con múltiples perturbaciones)
+
+  python main.py diagnosticar archivo.xyz   (Diagnóstico integrado de estructura)
 """)
 
 if __name__ == "__main__":
@@ -159,6 +185,69 @@ if __name__ == "__main__":
 
     elif comando == "reporte":
         run_script(["reporte.py"])
+
+    elif comando == "comparar":
+        if len(sys.argv) < 4:
+            print("[!] Uso: python main.py comparar A.xyz B.xyz")
+            sys.exit(1)
+
+        comparar_estructuras(sys.argv[2], sys.argv[3])
+
+    elif comando == "buscar":
+        if len(sys.argv) < 4:
+            print("[!] Uso: python main.py buscar objetivo.xyz carpeta/")
+            sys.exit(1)
+
+        objetivo = sys.argv[2]
+        carpeta = sys.argv[3]
+        buscar_vecinos(objetivo, carpeta)
+
+    # NUEVO COMANDO: fase
+    elif comando == "fase":
+        from phidynamics.core.phase_runner import correr_experimento
+
+        phi = [45, 12, 33, 7, 51, 28]
+        delta = [10, 5, 0, -5, 20, 15]
+
+        correr_experimento(phi, delta, ciclos=8)
+
+    # NUEVO COMANDO: fase-stats
+    elif comando == "fase-stats":
+        from phidynamics.core.phase_stats import analizar_sweep
+        print(analizar_sweep())
+
+    # NUEVO COMANDO: fase-report
+    elif comando == "fase-report":
+        imprimir_reporte_fase()
+
+    # NUEVO COMANDO: fase-sweep
+    elif comando == "fase-sweep":
+        phi = [45, 12, 33, 7, 51, 28]
+        deltas = [
+            [10, 5, 0, -5, 20, 15],
+            [5, 2, 0, -2, 10, 8],
+            [20, 10, 5, -10, 25, 18],
+        ]
+        barrer_fase(phi, deltas, ciclos=8)
+
+    elif comando == "diagnosticar":
+        if len(sys.argv) < 3:
+            print("[!] Uso: python main.py diagnosticar archivo.xyz")
+            sys.exit(1)
+
+        resultado = diagnosticar(sys.argv[2], ciclos=8, plot=False)
+
+        print("\n" + "=" * 60)
+        print("DIAGNÓSTICO INTEGRADO")
+        print("=" * 60)
+        print(f"Archivo:         {resultado['archivo']}")
+        print(f"Firma:           {resultado['firma']}")
+        print(f"Dimensionalidad: {resultado['dimensionalidad']}")
+        print(f"Absorción:       {resultado['absorcion_final']}")
+        print(f"Régimen:         {resultado['regimen']}")
+        print(f"Memoria:         {resultado['memoria']}")
+        print(f"Conclusión:      {resultado['conclusion']}")
+        print("=" * 60)
 
     else:
         print(f"[!] Comando desconocido: {comando}")

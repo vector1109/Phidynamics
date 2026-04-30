@@ -82,6 +82,38 @@ def analizar_carpeta():
     run(["main.py", "analizar", str(destino)])
 
 
+def mostrar_comandos_cli():
+    print("\n" + "=" * 60)
+    print("COMANDOS DISPONIBLES (CLI)".center(60))
+    print("=" * 60)
+    print()
+    print("  python main.py analizar <OBJ>")
+    print("      Ejemplos: 1BNA, proteina.pdb, lista.txt, input/pdb/")
+    print()
+    print("  python main.py simular")
+    print("      Ejecuta simulación fractal + JSON + visualización")
+    print()
+    print("  python main.py validar")
+    print("      Ejecuta suite de validación científica")
+    print()
+    print("  python main.py reporte")
+    print("      Muestra bitácora analítica acumulada")
+    print()
+    print("  python main.py comparar A.xyz B.xyz")
+    print("      Compara similitud estructural entre dos archivos .xyz")
+    print()
+    print("  python main.py buscar objetivo.xyz carpeta/")
+    print("      Busca vecinos estructurales en una carpeta")
+    print()
+    print("  python main.py fase")
+    print("      Ejecuta motor simbólico discreto de fase")
+    print()
+    print("  python main.py fase-stats")
+    print("      Analiza estadísticamente el barrido de fase")
+    print()
+    print("=" * 60)
+
+
 def loop():
     preparar()
 
@@ -109,6 +141,11 @@ def loop():
         else:
             print("[ERROR] Opción inválida.")
 
+        # Mostrar comandos CLI después de cada operación (opcional)
+        # mostrar_comandos_cli()
+
 
 if __name__ == "__main__":
+    # Mostrar comandos disponibles al inicio
+    mostrar_comandos_cli()
     loop()
