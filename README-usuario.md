@@ -1,4 +1,3 @@
-````markdown
 # Phidynamics — Manual de Usuario
 
 ## Introducción
@@ -18,7 +17,7 @@ Desde PowerShell, dentro del entorno del proyecto:
 
 ```powershell
 python user_console.py
-````
+```
 
 Esto abrirá la consola interactiva de usuario.
 
@@ -132,9 +131,9 @@ Ejecuta la suite de validación científica del sistema.
 
 Esta opción sirve para:
 
-* verificar consistencia interna
-* validar geometría
-* comprobar estabilidad del modelo
+- verificar consistencia interna
+- validar geometría
+- comprobar estabilidad del modelo
 
 ---
 
@@ -144,11 +143,11 @@ Muestra el reporte consolidado de análisis almacenados en bitácora.
 
 Incluye:
 
-* estructuras analizadas
-* delta
-* frecuencia
-* banda espectral
-* resumen estadístico
+- estructuras analizadas
+- delta
+- frecuencia
+- banda espectral
+- resumen estadístico
 
 ---
 
@@ -176,15 +175,15 @@ Phidynamics copiará automáticamente los datos al entorno interno antes de proc
 
 Phidynamics organiza automáticamente los datos del usuario en su estructura interna:
 
-* archivos individuales → `input/pdb/`
-* listas → `input/lists/`
-* carpetas → `input/batch/`
+- archivos individuales → `input/pdb/`
+- listas → `input/lists/`
+- carpetas → `input/batch/`
 
 Esto permite mantener:
 
-* orden interno
-* reproducibilidad
-* aislamiento del motor científico
+- orden interno
+- reproducibilidad
+- aislamiento del motor científico
 
 El usuario no necesita interactuar con estas carpetas manualmente.
 
@@ -196,14 +195,14 @@ Los resultados se almacenan automáticamente en la carpeta `data/`.
 
 Archivos comunes:
 
-* `data/bitacora_investigacion.json`
-* `data/simulacion_fractal.json`
+- `data/bitacora_investigacion.json`
+- `data/simulacion_fractal.json`
 
 Estos archivos contienen:
 
-* historial de análisis
-* resultados estructurales
-* registros de simulación
+- historial de análisis
+- resultados estructurales
+- registros de simulación
 
 ---
 
@@ -222,9 +221,9 @@ Estos archivos contienen:
 
 Antes de usar el sistema:
 
-* activar entorno virtual
-* instalar dependencias
-* ejecutar desde la carpeta del proyecto
+- activar entorno virtual
+- instalar dependencias
+- ejecutar desde la carpeta del proyecto
 
 Ejemplo:
 
@@ -237,10 +236,10 @@ python user_console.py
 
 ## Notas de uso
 
-* No es necesario editar código
-* No es necesario mover archivos manualmente
-* No es necesario conocer la arquitectura interna
-* El sistema gestiona automáticamente la organización de entradas
+- No es necesario editar código
+- No es necesario mover archivos manualmente
+- No es necesario conocer la arquitectura interna
+- El sistema gestiona automáticamente la organización de entradas
 
 El usuario solo debe proporcionar datos y ejecutar el flujo de análisis.
 
@@ -250,10 +249,7 @@ El usuario solo debe proporcionar datos y ejecutar el flujo de análisis.
 
 Phidynamics está diseñado para separar completamente:
 
-* operación de usuario
-* núcleo científico
+- operación de usuario
+- núcleo científico
 
 Esto permite una experiencia de uso simple, reproducible y segura.
-
-```
-```
