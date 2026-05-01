@@ -1,3 +1,4 @@
+
 # Phidynamics
 
 **Local-first computational biophysics for reproducible structural analysis**
@@ -148,6 +149,50 @@ Regime:         stable
 Memory:         indeterminate
 Conclusion:     graphene / hexagonal lattice | stable regime | indeterminate memory
 ```
+
+---
+
+## Results / Validation
+
+### Structural regime separation
+
+Phidynamics produces stable separation between normalized structural regimes under torsion-derived observables.
+
+![Structural Regimes](docs/img/structural_regimes.png)
+
+Globular proteins remain clustered in low-Δ bands, relaxed DNA-like states collapse near the lower structural regime, and canonical B-DNA occupies a reproducibly higher Δ band.
+
+---
+
+### Phase convergence
+
+Phase absorption increases monotonically across simulation cycles, indicating stable convergence under iterative phase evolution.
+
+![Phase Convergence](docs/img/phase_convergence.png)
+
+The system exhibits ordered convergence rather than stochastic oscillation, supporting deterministic phase behavior under repeated local execution.
+
+---
+
+### Sweep robustness
+
+Repeated phase sweeps produce low final dispersion across independent runs.
+
+![Sweep Robustness](docs/img/sweep_robustness.png)
+
+Low sweep variance indicates that phase response is stable across perturbation runs and does not depend on isolated favorable initial conditions.
+
+---
+
+### Validation summary
+
+| Test | Result |
+|---|---|
+| Structural Δ separation | Stable |
+| Phase convergence | Monotonic |
+| Sweep robustness | High |
+| Regime reproducibility | Stable |
+| Local deterministic execution | Confirmed |
 
 ---
 
@@ -325,3 +370,5 @@ fabianista / Vector Torsion SRL
 
 Phidynamics does not claim consensus.
 It claims reproducibility.
+```
+
