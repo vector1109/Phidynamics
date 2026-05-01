@@ -1,377 +1,321 @@
 # Phidynamics
 
-### Marco Soberano de Biofísica Computacional
+**Local-first computational biophysics for reproducible structural analysis**
+*Biomolecular structure treated as geometry under torsion — not as a black box.*
 
-**Biofísica computacional derivada de torsión para análisis estructural reproducible**
+Phidynamics is a local-first computational biophysics framework for structural analysis of biomolecules using explicit geometric observables derived from torsion, curvature, and constrained phase dynamics.
 
-> *“La estructura biológica no se trata aquí como una caja negra, sino como geometría bajo torsión.”*
-
----
-
-## Descripción general
-
-Phidynamics es un marco experimental de biofísica computacional orientado al análisis estructural de biomoléculas mediante torsión, curvatura y organización geométrica.
-
-Basado en un formalismo geométrico inspirado en Riemann–Cartan, el sistema reemplaza inferencia opaca tipo “caja negra” por observables geométricos explícitos, auditables y reproducibles, aplicables al estudio estructural de proteínas, ADN y sistemas helicoidales complejos.
-
-El objetivo del proyecto es explorar si ciertos regímenes estructurales biológicos pueden distinguirse de forma estable mediante observables geométricos normalizados derivados de torsión.
-
-Phidynamics fue diseñado para:
-
-* ejecución local,
-* interpretabilidad física,
-* comparación estructural reproducible,
-* y experimentación falsable de bajo costo sobre hardware de consumo.
-
-Phidynamics no requiere:
-
-* clústeres GPU,
-* supercómputo de dinámica molecular,
-* infraestructura propietaria,
-* ni pipelines de entrenamiento de machine learning.
-
-Corre localmente, de forma determinista, y produce observables geométricos repetibles a partir de datos estructurales reales.
+It replaces opaque inference with deterministic, inspectable, and reproducible geometric descriptors that can be computed directly from real structural data on consumer hardware.
 
 ---
 
-## Hipótesis central
+## What Phidynamics does
 
-Phidynamics investiga si una geometría normalizada derivada de torsión puede actuar como observable estable para distinguir regímenes estructurales en sistemas biológicos.
+Phidynamics provides a reproducible structural analysis pipeline for biomolecular systems.
 
-En lugar de tratar la organización biomolecular como un problema puramente estadístico o inferencial, el sistema modela la estructura como respuesta geométrica restringida bajo organización torsional.
+Given a structural input (`PDB` or `XYZ`), it can:
 
-La hipótesis de trabajo es que un observable geométrico normalizado (`Δ`) puede separar de forma reproducible:
+* analyze structural geometry
+* compute normalized geometric signatures
+* compare structural similarity
+* classify structural regimes
+* simulate constrained phase dynamics
+* generate integrated structural diagnostics
 
-* regímenes proteicos globulares,
-* regímenes de ADN B canónico,
-* y conformaciones relajadas o de baja tensión.
+Phidynamics is designed for:
 
-Actualmente esto se trata como una **hipótesis de biofísica computacional**, no como una ley física establecida.
+* local execution
+* deterministic outputs
+* geometric interpretability
+* structural comparison
+* falsifiable low-cost experimentation
 
----
+It does **not** require:
 
-## Qué es Phidynamics
+* GPU clusters
+* molecular dynamics supercomputing
+* proprietary infrastructure
+* machine learning training pipelines
 
-Phidynamics es:
-
-* un marco de biofísica computacional,
-* un motor de análisis estructural derivado de torsión,
-* una tubería reproducible de descriptores geométricos,
-* una alternativa basada en hipótesis frente a inferencia biológica opaca,
-* una herramienta científica local-first.
-
----
-
-## Qué no es Phidynamics
-
-Phidynamics **no** es:
-
-* un reemplazo de dinámica molecular,
-* un predictor de machine learning,
-* un sistema clínico o diagnóstico,
-* un dispositivo biomédico,
-* un instrumento médico validado,
-* un sustituto de biología experimental húmeda (wet-lab).
-
-Es un marco experimental de análisis estructural, modelado falsable y generación de hipótesis.
+All outputs are generated locally, deterministically, and reproducibly from structural input.
 
 ---
 
-## Alcance científico y limitaciones
+## Quick Start
 
-Phidynamics es un sistema de investigación experimental.
-
-Está orientado a:
-
-* modelado estructural,
-* comparación geométrica,
-* generación de hipótesis,
-* y biofísica computacional exploratoria.
-
-No está destinado a:
-
-* diagnóstico,
-* tratamiento,
-* interpretación clínica,
-* ni toma de decisiones biomédicas.
-
-Las salidas actuales deben interpretarse como **observables geométricos**, no como causalidad biológica directa.
-
-En particular:
-
-* `Δ` es actualmente un descriptor estructural,
-* no una constante física universal demostrada,
-* y no una variable causal biológica validada.
-
-Las interpretaciones sobre resonancia, estado espectral o accesibilidad genómica son actualmente **hipótesis de trabajo** y deben tratarse como exploratorias hasta validación independiente.
-
----
-
-## Resultado principal (estado actual)
-
-El resultado más sólido del proyecto no es la afirmación de una nueva ley física.
-
-El resultado más sólido es que Phidynamics produce un **observable normalizado derivado de torsión (`Δ`) que parece separar regímenes estructurales de forma reproducible** bajo ejecución local.
-
-En las pruebas actuales, `Δ` muestra separación estable entre:
-
-| Clase estructural         | Rango observado de `Δ` |
-| ------------------------- | ---------------------: |
-| Proteínas globulares      |           ~0.04 – 0.09 |
-| Estados tipo ADN relajado |                  ~0.04 |
-| ADN B canónico            |           ~0.17 – 0.18 |
-
-Esto sugiere que `Δ` puede funcionar como descriptor reproducible de régimen estructural bajo comparación geométrica normalizada.
-
-Este es, actualmente, el resultado central del marco.
-
----
-
-## Por qué importa
-
-Phidynamics no intenta competir con dinámica molecular por fuerza bruta.
-
-Su aporte es otro:
-
-propone que observables geométricos de bajo costo pueden capturar regímenes estructurales biológicamente relevantes sin requerir pilas de simulación de alta complejidad.
-
-La implicancia práctica es directa:
-
-un descriptor estructural falsable y reproducible puede calcularse localmente sobre hardware de consumo sin depender de sistemas opacos de inferencia.
-
-Eso vuelve al marco:
-
-* inspeccionable,
-* reproducible,
-* portable,
-* y científicamente falsable.
-
----
-
-## Características principales
-
-* motor geométrico inspirado en Riemann–Cartan,
-* métrica helicoidal modulada por OAM,
-* observable estructural derivado de torsión (`Δ`),
-* generador de crecimiento fractal / helicoidal,
-* modelado de ADN de doble hebra,
-* comparación estructural normalizada,
-* flujo reproducible basado en PDB,
-* ejecución local determinista,
-* visualización geométrica 3D,
-* análisis compatible con CPU de bajo costo.
-
----
-
-## Instalación
+Clone the repository and create a virtual environment:
 
 ```bash
-git clone https://github.com/fabianista/Phidynamics.git
+git clone https://github.com/vector1109/Phidynamics.git
 cd Phidynamics
 
 python -m venv venv
 venv\Scripts\activate          # Windows
 # source venv/bin/activate     # Linux / macOS
 
-pip install torch numpy matplotlib biopython scipy
+pip install -r requirements.txt
 ```
 
 ---
 
-## Inicio rápido
+## Core Commands
 
-### Ejecutar simulación geométrica local
-
-```bash
-python main.py
-```
-
-### Analizar una estructura PDB real
+### Analyze a structure
 
 ```bash
-python analizar_pdb.py 1BNA
+python main.py analizar 1BNA
+python main.py analizar input/xyz/grafeno.xyz
 ```
 
-Salida esperada (ejemplo):
+Computes structural signature, topology, and geometric classification.
+
+---
+
+### Compare two structures
+
+```bash
+python main.py comparar input/xyz/grafeno.xyz input/xyz/tetraedro.xyz
+```
+
+Computes normalized structural similarity between two geometries.
+
+---
+
+### Search structural neighbors
+
+```bash
+python main.py buscar input/xyz/grafeno.xyz input/xyz/
+```
+
+Finds nearest structural neighbors in a local dataset.
+
+---
+
+### Run phase dynamics
+
+```bash
+python main.py fase
+```
+
+Executes constrained torsion-phase evolution and reports absorption dynamics.
+
+---
+
+### Run phase sweep
+
+```bash
+python main.py fase-sweep
+python main.py fase-stats
+python main.py fase-report
+```
+
+Runs multi-condition phase sweeps, summarizes stability, and reports dynamic regimes.
+
+---
+
+### Run integrated diagnosis
+
+```bash
+python main.py diagnosticar input/xyz/grafeno.xyz
+```
+
+Runs the full MVP pipeline:
+
+**structure → geometry → phase → absorption → regime → diagnosis**
+
+---
+
+## Example Output
+
+Phidynamics produces explicit, inspectable observables such as:
+
+* structural class
+* dimensionality
+* coordination
+* cyclicity
+* normalized torsion absorption
+* phase regime
+* integrated structural diagnosis
+
+Example diagnostic output:
 
 ```text
-Delta (Torsión): 0.1759
-Frecuencia de Resonancia: 34.43 Hz
-Estado Espectral: Gamma (Alta Energía / Procesamiento)
-Accesibilidad Genómica: 100.00%
+File:           input/xyz/grafeno.xyz
+Signature:      graphene / hexagonal lattice
+Dimensionality: 2D
+Absorption:     1.935
+Regime:         stable
+Memory:         indeterminate
+Conclusion:     graphene / hexagonal lattice | stable regime | indeterminate memory
 ```
 
 ---
 
-## Reproducibilidad
+## Scientific Scope
 
-Todas las comparaciones estructurales reportadas en este repositorio están diseñadas para reproducirse en hardware de consumo estándar.
+Phidynamics is an experimental computational biophysics framework.
 
-No se requiere clúster GPU, infraestructura propietaria ni entrenamiento de modelos.
+It is intended for:
 
-Scripts principales de reproducibilidad:
+* structural modeling
+* geometric comparison
+* computational hypothesis generation
+* exploratory biophysical analysis
 
-```bash
-python validate_with_pdb.py
-python consistency_test.py
-python universal_test.py
-python verificacion_constante.py
-python calculadora_accesibilidad.py
+It is **not** intended for:
+
+* medical diagnosis
+* clinical interpretation
+* treatment decisions
+* biomedical intervention
+
+Current outputs should be interpreted as **geometric observables**, not direct biological causality.
+
+---
+
+## Core Hypothesis
+
+Phidynamics investigates whether normalized torsion-derived geometry can act as a stable observable for distinguishing structural regimes in biological systems.
+
+Instead of modeling biomolecular organization as a purely statistical or inferential problem, Phidynamics treats structure as constrained geometric response under torsional organization.
+
+Its working hypothesis is that normalized geometric observables can reproducibly separate:
+
+* globular protein regimes
+* canonical B-DNA regimes
+* relaxed low-tension conformations
+
+This is currently treated as a computational biophysics hypothesis, not an established physical law.
+
+---
+
+## Current Result
+
+The strongest current result is not the claim of a new physical law.
+
+The strongest result is that Phidynamics produces a normalized torsion-derived observable that appears to separate structural regimes reproducibly under local execution.
+
+Observed Δ ranges currently show stable separation between:
+
+| Structural Class        | Observed Δ Range |
+| ----------------------- | ---------------: |
+| Globular proteins       |     ~0.04 – 0.09 |
+| Relaxed DNA-like states |            ~0.04 |
+| Canonical B-DNA         |     ~0.17 – 0.18 |
+
+This suggests Δ may function as a reproducible descriptor of structural regime under normalized geometric comparison.
+
+That is the current central result of the framework.
+
+---
+
+## Why it matters
+
+Phidynamics does not attempt to compete with molecular dynamics by brute force.
+
+Its contribution is different:
+
+it proposes that low-cost geometric observables may capture biologically relevant structural regimes without requiring high-complexity simulation stacks.
+
+This makes the framework:
+
+* inspectable
+* reproducible
+* portable
+* computationally cheap
+* scientifically falsifiable
+
+---
+
+## Project Status
+
+Current status: **MVP stable baseline**
+
+Phidynamics is now:
+
+* versioned
+* reproducible
+* locally executable
+* structurally testable
+* baseline-stable
+
+Current baseline commit:
+
+```text
+4ce778a
+MVP estable: pipeline estructural + fase + diagnostico integrado
 ```
 
-Estos scripts reproducen el flujo de comparación estructural utilizado para derivar las observaciones actuales sobre regímenes `Δ`.
+---
+
+## Roadmap
+
+* Procrustes alignment baseline
+* RMSD vs Δ benchmark
+* batch multi-PDB CLI
+* JSON export pipeline
+* unit tests for Δ stability
+* CI reproducibility validation
+* A-DNA / Z-DNA extension
+* harmonic parameter sweeps
+* publishable validation report
+* statistical significance analysis
 
 ---
 
-## Resumen de validación
+## License
 
-La validación actual sugiere que el observable normalizado derivado de torsión (`Δ`) se comporta como un descriptor estable de régimen bajo normalización geométrica.
+Phidynamics uses a dual-license model.
 
-Comportamiento observado:
+### Code
 
-* los modelos iniciales en coordenadas crudas divergen,
-* la comparación geométrica normalizada estabiliza,
-* las proteínas agrupan en un régimen de `Δ` bajo,
-* el ADN B canónico ocupa una banda estable superior de `Δ`,
-* los estados relajados tipo ADN colapsan hacia el régimen adyacente a proteínas.
-
-Esto **no** establece todavía una ley física universal.
-
-Sí establece una separación computacional reproducible que justifica investigación adicional.
-
----
-
-## Hoja de ruta
-
-* [ ] Agregar baseline de alineamiento Procrustes
-* [ ] Agregar benchmark RMSD / `Δ`
-* [ ] Agregar CLI batch multi-PDB
-* [ ] Agregar exportación JSON de resultados
-* [ ] Agregar tests unitarios para estabilidad de `Δ`
-* [ ] Agregar validación reproducible en CI
-* [ ] Extender clases conformacionales de ADN (A-DNA / Z-DNA)
-* [ ] Agregar barridos de parámetros armónicos
-* [ ] Agregar informe de validación publicable
-* [ ] Agregar análisis de significancia estadística
-
----
-
-## Licencia (Esquema Dual)
-
-Phidynamics se distribuye bajo un esquema de **licencia dual**, separando explícitamente la capa de implementación del marco conceptual.
-
-### 1. Código fuente (Open Source)
-
-Todo el código contenido en:
-
-* `src/`
-* `tests/`
-* `scripts/`
-* utilidades de ejecución
-* visualización
-* validación reproducible
-
-se distribuye bajo:
+All executable source code is released under:
 
 **GNU Affero General Public License v3.0 (AGPL-3.0)**
 
-Esto permite:
+This includes:
 
-* uso,
-* auditoría,
-* modificación,
-* redistribución,
-* despliegue local o remoto,
-
-con la obligación de mantener apertura del código derivado y de cualquier servicio expuesto sobre él.
-
-Esto protege al sistema contra apropiación cerrada de su implementación.
-
-### 2. Marco teórico y formulación conceptual
-
-Todo el contenido contenido en:
-
-* `docs/`
-* formulación teórica,
-* hipótesis,
-* taxonomía conceptual,
-* documentación metodológica,
-* nomenclatura original,
-* interpretación estructural,
-* formalismo explicativo,
-
-se distribuye bajo:
-
-**CC BY-NC-ND 4.0**
-(Atribución – No Comercial – Sin Derivadas)
-
-Esto permite:
-
-* lectura,
-* cita,
-* discusión,
-* difusión académica,
-
-pero **no permite**:
-
-* uso comercial del marco conceptual,
-* reformulación derivada como teoría propia,
-* relicenciamiento conceptual,
-* redistribución modificada,
-* apropiación metodológica sin autorización.
-
-### ¿Por qué licencia dual?
-
-Porque este repositorio contiene dos capas distintas:
-
-1. una implementación computacional auditable,
-2. una formulación conceptual original.
-
-Ambas conviven, pero no cumplen la misma función.
-
-El código puede auditarse y extenderse.
-La formulación puede estudiarse y citarse.
-La apropiación conceptual no es libre.
-
-### Resumen práctico
-
-| Componente                 | Licencia        | Uso permitido                                  |
-| -------------------------- | --------------- | ---------------------------------------------- |
-| Código fuente              | AGPL-3.0        | uso, modificación, despliegue con reciprocidad |
-| Scripts y validación       | AGPL-3.0        | reproducible, auditable, extensible            |
-| Documentación metodológica | CC BY-NC-ND 4.0 | lectura, cita, difusión                        |
-| Marco conceptual           | CC BY-NC-ND 4.0 | no comercial, no derivado                      |
-
-### Licenciamiento comercial
-
-Si desea:
-
-* integrar el marco en software propietario,
-* relicenciar componentes,
-* usar el formalismo en productos cerrados,
-* incorporar la metodología en entornos comerciales,
-* o negociar excepciones de copyleft,
-
-debe solicitar licencia comercial o autorización expresa al autor.
+* source code
+* execution scripts
+* validation
+* visualization
+* reproducible tooling
 
 ---
 
-## Cita
+### Theory and conceptual framework
 
-Si utiliza Phidynamics en investigación, cite:
+Conceptual formulation, theoretical interpretation, and methodological framework are released under:
+
+**CC BY-NC-ND 4.0**
+
+This includes:
+
+* theoretical framing
+* conceptual methodology
+* nomenclature
+* explanatory formalism
+* interpretive framework
+
+The code is open for audit and extension.
+The conceptual framework is open for study and citation.
+
+---
+
+## Citation
 
 ```bibtex
 @software{phidynamics2026,
   author = {Farias, Fabian Dario},
-  title = {Phidynamics: Marco Soberano de Biofísica Computacional},
+  title = {Phidynamics: Local-first Computational Biophysics for Reproducible Structural Analysis},
   year = {2026},
-  url = {https://github.com/fabianista/Phidynamics}
+  url = {https://github.com/vector1109/Phidynamics}
 }
 ```
 
 ---
 
-## Autor
+## Author
 
 **Fabián Darío Farías**
 fabianista / Vector Torsion SRL
@@ -379,6 +323,5 @@ fabianista / Vector Torsion SRL
 * [fabiandariofarias@gmail.com](mailto:fabiandariofarias@gmail.com)
 * [vector.torsion.srl@gmail.com](mailto:vector.torsion.srl@gmail.com)
 
----
-
-> *Phidynamics no reclama consenso. Reclama reproducibilidad.*
+Phidynamics does not claim consensus.
+It claims reproducibility.
